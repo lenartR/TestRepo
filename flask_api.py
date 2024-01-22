@@ -1,16 +1,17 @@
-from flask import Flask
+from flask import Flask, jsonify, request
+from run_all import printI
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return 'Hello world'
+# @app.route('/')
+# def index():
+#     return jsonify(printI())
+
+@app.route('/get/run_all_ahi', methods = ['GET'])
+def run_all():
+    result = printI()
+    return jsonify(result)
 
 
 if __name__ == '__main__':
     app.run(debug=True)
-    #add comments
-for i in range([1, 5]):
-    print(i)
-    if i == 4:
-        print('Hi i am the formth i!')
